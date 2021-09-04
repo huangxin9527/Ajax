@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM2</title>
+  </head>
+  <body>
+    请输入内容：<input type="text" id="in" />
+    <div id="msg">测试文本</div>
+    <button onclick="showMsg()">显示内容</button>
+    <script>
+      function showMsg() {
+        // 将输入框中的内容动态的显示div元素中
+        // 1、先获取input输入框的对象，然后在获取它的的内容
+        let obj = document.getElementById("in");
+        // console.log(obj.value);
+        // 2、将获取到的内容显示到div元素中，在此之前要获取到div的元素
+        let obj1 = document.getElementById("msg");
+        obj1.innerHTML = obj.value;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "subjects": [
+    {
+      "episodes_info": "",
+      "rate": "7.4",
+      "cover_x": 1080,
+      "title": "夏日友晴天",
+      "url": "https:\/\/movie.douban.com\/subject\/35161768\/",
+      "playable": false,
+      "cover": "https://img1.doubanio.com\/view\/photo\/s_ratio_poster\/public\/p2675958609.webp",
+      "id": "35161768",
+      "cover_y": 1542,
+      "is_new": false
+    },
+    {
+      "episodes_info": "",
+      "rate": "6.1",
+      "cover_x": 729,
+      "title": "追忆迷局",
+      "url": "https:\/\/movie.douban.com\/subject\/26615748\/",
+      "playable": false,
+      "cover": "https://img9.doubanio.com\/view\/photo\/s_ratio_poster\/public\/p2654959196.webp",
+      "id": "26615748",
+      "cover_y": 1080,
+      "is_new": false
+    }
+  ]
+}

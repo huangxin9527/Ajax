@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 输入框，输入小精灵的id编号，通过id编号点击搜索，查找小精灵的数据 -->
+    <input type="text" id="pokeid" placeholder="请输入宝可梦的id" />
+    <button id="btn">搜索</button>
+    <div id="show"></div>
+    <script>
+      //获取元素
+      var pokeid = document.getElementById("pokeid");
+      var btn = document.getElementById("btn");
+      var show = document.getElementById("show");
+      //1、 获取用户输入的数字
+      //2、调用ajax函数并且把数字传入到ajax中
+      //3、数据回来把数据展示给客户
+      btn.onclick = function () {
+        //1、获取用户输入的数字
+        var idval = pokeid.value.trim();
+        //2、调用ajax函数并且把数字传入到ajax中
+        ajax(idval);
+      };
+      function ajax(i) {
+        // 创建异步函数
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              //使用JSON将字符串的格式的对象，转换为真的对象
+              var result = JSON.parse(xhr.responseText);
+              console.log(result);
+              //展示这个方法，放在外面，在里面调用
+              showlist(result);
+            }
+          }
+        };
+        // 创建请求信息
+        xhr.open("GET", `/pokeshow?id=${i}`, true);
+        // 发送请求
+        xhr.send();
+      }
+      function showlist(r) {
+        show.innerHTML = `
+        <h2>${r.id}</h2>
+        <h3>${r.name}</h3>
+        <img src=./img/${r.id}.png width=200>`;
+      }
+    </script>
+  </body>
+</html>

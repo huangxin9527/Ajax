@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <input type="text" id="uname" />
+    <button id="btn">提交</button>
+    <div id="show"></div>
+    <script>
+      //js控制html，修改css
+      //交互需要的两件事
+      //1、需要拿到用户输入的内容
+      //2、需要把结果给用户看或者进行某种操作
+      //第一步，需要获取元素
+      var username = document.getElementById("username");
+      // 获取btn
+      var btn = document.getElementById("btn");
+      //获取div
+      var show = document.getElementById("show");
+      //第二步，需要事件触发在获取用输入的信息
+      btn.onclick = function () {
+        //          show里面的内容
+        // cosnole.log(show.innerHTML);
+        show.innerHTML = "李四";
+        var unameval = uname.value;
+        ajax(unameval);
+      };
+      function ajax(n) {
+        // 创建异步对象
+        var xhr = new XMLHttpRequest();
+        // 监听并等待数据
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              var result = xhr.responseText;
+              console.log(result);
+            }
+          }
+        };
+        // 设置请求信息
+        xhr.open("POST", "/jh", true);
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+
+        // 发送请求
+        xhr.send(`names=${n}`);
+      }
+    </script>
+  </body>
+</html>

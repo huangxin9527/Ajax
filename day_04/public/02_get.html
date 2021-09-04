@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>day_04</title>
+
+  </head>
+  <body>
+    <div>125</div>
+    <script>
+      // 创建一个自定义函数封装ajax的方法什么时候用什么时候调用
+      function ajax() {
+        //1、创建xhr对象
+        var xhr = new XMLHttpRequest();
+        console.log(xhr);
+        //4、原本直接接受数据，现在通过监听判断readyState的值，为4的时候数据就回来了
+        xhr.onreadystatechange = function () {
+          //console.log(xhr.readyState);
+          //判断 readyState是 4 的时候才可以拿到后台的数据
+          if (xhr.readyState === 4) {
+            //拿到后台数据也不能保证后台不出问题，判断后台返回内容成功
+            //再进行数据的接收
+            if (xhr.status >= 200 && xhr.status < 300) {
+              var result = xhr.responseText;
+              console.log(result);
+            }
+          }
+        };
+        // 2、设计请求信息
+        //getpar2 传参方式 / 的方式,直接把参数写在 / 后面
+        xhr.open("GET", "/getpar2/jack", true);
+        //3、发送请求
+        xhr.send();
+      }
+      ajax();
+    </script>
+  </body>
+</html>

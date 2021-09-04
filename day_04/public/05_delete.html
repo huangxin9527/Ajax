@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var username = "刘通";
+      // 创建ajax函数
+      function ajax() {
+        // 1、创建异步对象
+        var xhr = new XMLHttpRequest();
+        // 4、监听onreadystatechange，并等待返回值
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              var result = xhr.responseText;
+              console.log(result);
+            }
+          }
+        };
+        // 2、设置请求信息
+        xhr.open("delete", `/ajaxdelete/${username}`, true);
+        // 3、发送请求
+        xhr.send();
+      }
+      ajax();
+    </script>
+  </body>
+</html>

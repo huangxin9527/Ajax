@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+  </head>
+  <body>
+    <div id="first">楠节生病了，希望早日康复！</div>
+    <button onclick="change()">修改</button>
+    <script>
+      function change() {
+        // 1、获取div中元素
+        // let obj = document.getElementById("first");
+        // console.log(obj);
+        // 简写形式
+        console.log(first.innerHTML);
+        // 获取div中的文字
+        // console.log(obj.innerHTML);
+        // 2、修改div中内容
+        // obj.innerHTML = "燕姐来代课！";
+        first.innerHTML = "燕姐来代课！";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+        // 创建一个ajax函数
+        function ajax() {
+            //1、 创建异步对象
+           var xhr = new XMLHttpRequest(); 
+            //4、 监听并接收返回值
+           xhr.onreadystatechange = function () {
+               if (xhr.readyState === 4) {
+                   if (xhr.status>=200 && xhr.status<300) {
+                       var result = xhr.responseText;
+                       console.log(result);
+                   }
+               }
+           }
+            //2、设置请求信息
+           xhr.open('POST','/ajaxpost',true);
+            //3、 POST方式发送之前，必须指定传递参数的数据格式
+            //设置请求头，先指定请求参数的解析方式再传递数据
+            xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+            //发送请求
+           xhr.send('names=bob&pwd=123456');
+        }
+        ajax();
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>全部宝可梦</title>
+  </head>
+  <body>
+    <ul id="show"></ul>
+    <script>
+      // 获取元素
+      var show = document.getElementById("show");
+      // 调用ajax
+      ajax();
+      //ajax函数，接口地址/pokelist  get方法
+      function ajax() {
+        // 创建异步对象
+        var xhr = new XMLHttpRequest();
+        //监听，等待返回数据
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              var result = JSON.parse(xhr.responseText);
+              // console.log(result);
+              //专门展示函数的函数（套路）
+              showlist(result);
+            }
+          }
+        };
+        //请求信息
+        xhr.open("GET", "/pockelist", true);
+        //发送请求
+        xhr.send();
+      }
+      function showlist(r) {
+        /*
+        套路 1、为了保证for循环里面的新增数据是累加的，因此在for循环外
+        先创建一个空的容器，准备装打包后的所有内容
+        */
+        var str = "";
+        //套路 2、使用for循环遍历参数的动态数据，主要是参数的长度
+        for (let i = 0; i < r.length; i++) {
+          /*
+        套路 3、在for循环内，把每一个标签或者嵌套标签都用模板字符串
+        字符串包起来，并将其中填入参数的动态数据，取最后集体交接给
+        （+=）空字符串进行累加收集
+        */
+          // console.log(r[i]);
+          // 自己的
+          // show.innerHTML += `
+          // <li>
+          //   <h2>${r[i].id}</h2>
+          //   <h3>${r[i].name}</h3>
+          //   <img src=./img/${r[i].id}.png>
+          // </li>
+          //     `;
+          // 老师的方法
+          str += `
+          <li>
+            <h2>${r[i].id}</h2>
+            <h3>${r[i].name}</h3>
+            <img src=../img/${r[i].id}.png>
+          </li>
+              `;
+        }
+        /*
+        套路 4、最后把打包好的字符串，给页面上的一个元素插入进去，
+        使用元素的innerHTML属性
+        */
+        show.innerHTML = str;
+      }
+    </script>
+  </body>
+</html>
